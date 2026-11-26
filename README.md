@@ -15,13 +15,16 @@
 | [`assets/video/`](assets/video/) | 预设动作的透明 WebM 及对应的逐帧像素命中数据。 |
 | [`assets/wardrobe/`](assets/wardrobe/) | 可自由混搭的服装单品、插画、发型与搭配清单。 |
 | [`scripts/bake-sprites/`](scripts/bake-sprites/) | 把角色动作输出成透明 WebM 和点击区数据。 |
+| [`scripts/windows-download/`](scripts/windows-download/) | Windows 发版启动器。首次运行会自动取得并校验两个本机模型。 |
 | [`services/`](services/) | Python 搜索脚本、依赖列表，以及模型和推理运行时的来源、版本及校验值。 |
 | [`test/`](test/) 与 [`docs/`](docs/) | 自动化测试、验收条件和版本测试记录。 |
 | [`package.json`](package.json) 与 [`forge.config.cjs`](forge.config.cjs) | 开发命令、依赖和 Windows 打包设置。 |
 
 ## Windows 使用
 
-安装版运行 `MoonTeahouse-Setup.exe`。便携版完整解压后运行 `MoonTeahouse.exe`。右键任务栏通知区域的头像可以查看菜单。
+从 [GitHub Releases](https://github.com/wuzeqing811-hue/moon-teahouse-pet/releases) 下载 `MoonTeahouse-1.9.0-Windows-Online-Setup.zip`，完整解压到可写入的文件夹，再双击 `Start Moon Teahouse.cmd`。首次启动会自动下载 DeepSeek 与千問，合计约 2.24 GB。两份文件校验后会自动打开桌宠。以后可以直接运行 `MoonTeahouse.exe`，从「设置 → 聊天模型」离线切换两个模型。
+
+安装版运行 `MoonTeahouse-Setup.exe`。已含两个模型的离线便携版完整解压后，直接运行 `MoonTeahouse.exe`。右键任务栏通知区域的头像可以查看菜单。
 
 - 点击角色时会播放打瞌睡，并打开聊天。聊天已打开时，点击仍露出的角色可重新播放动画。拖动角色移动窗口，在角色上滚动鼠标滚轮缩放。
 - 聊天视窗的宽度和高度可在「设置 → 聊天視窗」分别输入，点「套用」即时调整并保存。托盘「缩放」和「玩偶縮放」用于调整桌宠尺寸。
