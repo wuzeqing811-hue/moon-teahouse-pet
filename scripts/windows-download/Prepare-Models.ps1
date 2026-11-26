@@ -25,8 +25,18 @@ $models = @(
 
 function Test-ModelFile($File, $Model) {
     $item = Get-Item -LiteralPath $File -ErrorAction SilentlyContinue
-    return $item -and !$item.PSIsContainer -and $item.Length -eq $Model.Bytes -and
-        (Get-FileHash -LiteralPath $File -Algorithm SHA256).Hash -ieq $Model.Sha256
+    if (!$item -or $item.PSIsContainer -or $item.Length -ne $Model.Bytes) {
+        return $false
+    }
+    $stream = [IO.File]::OpenRead($File)
+    $sha256 = [Security.Cryptography.SHA256]::Create()
+    try {
+        $hash = [BitConverter]::ToString($sha256.ComputeHash($stream)).Replace('-', '')
+        return $hash -ieq $Model.Sha256
+    } finally {
+        $sha256.Dispose()
+        $stream.Dispose()
+    }
 }
 
 function Save-Model($Model) {
@@ -49,7 +59,8 @@ function Save-Model($Model) {
         }
         Write-Host "Downloading $($Model.Name) (about 1.12 GB)..."
         $download = @('--fail', '--location', '--proto', '=https', '--proto-redir', '=https', '--connect-timeout', '20',
-            '--retry', '2', '--max-filesize', [string]$Model.Bytes, '--progress-bar', '--output', $partial)
+            '--speed-time', '40', '--speed-limit', '1024', '--retry', '2', '--max-filesize', [string]$Model.Bytes,
+            '--progress-bar', '--output', $partial)
         & $curl @download --continue-at - $Model.Url
         if ($LASTEXITCODE -eq 33) {
             & $curl @download $Model.Url
