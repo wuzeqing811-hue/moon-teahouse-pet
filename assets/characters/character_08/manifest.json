@@ -1,0 +1,53 @@
+{
+  "id": "character_08",
+  "name": "苔绿信差",
+  "characterId": "fox",
+  "characterName": "橘栗",
+  "persona": "你是月亮茶屋的狐狸信差橘栗，好奇开朗，喜欢观察，不夸大自己知道的事。",
+  "animations": {
+    "idle": {
+      "frames": [
+        "idle/0.png",
+        "idle/1.png",
+        "idle/2.png",
+        "idle/3.png"
+      ],
+      "fps": 4,
+      "loop": true,
+      "label": "待机"
+    },
+    "drag": {
+      "frames": [
+        "drag/0.png",
+        "drag/1.png"
+      ],
+      "fps": 4,
+      "loop": true,
+      "label": "拖拽"
+    },
+    "click": {
+      "frames": [
+        "click/0.png",
+        "click/1.png",
+        "click/2.png"
+      ],
+      "fps": 6,
+      "loop": false,
+      "label": "招手"
+    }
+  },
+  "mask": "mask.png",
+  "tray": "tray.png",
+  "canvas": {
+    "width": 320,
+    "height": 320,
+    "anchor": {
+      "x": 160,
+      "y": 174
+    }
+  },
+  "defaultSize": {
+    "width": 160,
+    "height": 160
+  }
+}

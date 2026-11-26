@@ -1,0 +1,18 @@
+Moon Teahouse uses llama.cpp to run DeepSeek and Qwen locally.
+
+Runtime: llama.cpp Windows x64 CPU build b12648
+https://github.com/ggml-org/llama.cpp/releases/tag/b12648
+Runtime ZIP SHA-256: e22d946bd903047cf6339334cb3b0612ca7fafff52aa1ef64625f821e2020ed1
+
+Model: DeepSeek-R1-Distill-Qwen-1.5B, Q4_K_M GGUF quantization by Unsloth
+https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/tree/3cb4d15544a2a5e07439592b9a0965b6445fbd34
+Model SHA-256: f3bdf9cf31dee4b57ae4e455a1cb0d01b5c2c1b50d72d3112141c195506c2840
+
+The DeepSeek-R1 model weights are distributed under the MIT license.
+The base Qwen2.5-Math model is licensed under Apache 2.0. See the included
+license files for the runtime, model, and dependencies.
+
+Model: Qwen2.5-1.5B-Instruct, Q4_K_M GGUF published by Qwen
+https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/tree/91cad51170dc346986eccefdc2dd33a9da36ead9
+Model SHA-256: 6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e
+Qwen distributes these weights under Apache 2.0. See LICENSE-Qwen2.5.

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+out/
+*.log
+__pycache__/
+.venv/
+.env
+.env.*
+*.gguf
+*.zip
+*.nupkg
+deepseek-runtime/
+qwen-model/

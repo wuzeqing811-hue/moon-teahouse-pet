@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'">
+  <title>月亮茶屋 · 聊天</title>
+  <link rel="stylesheet" href="/ui.css">
+</head>
+<body class="chat-window">
+  <main class="panel">
+    <header class="topbar">
+      <div class="portrait"><img id="portrait" alt="" hidden><span id="portrait-fallback" aria-hidden="true">☾</span></div>
+      <div class="title"><h1 id="name">月亮茶屋</h1><button id="model-state" class="model-state" type="button">检查本地模型中</button></div>
+      <button id="toggle-settings" class="quiet" type="button" aria-expanded="false">设置</button>
+      <button id="close" class="icon" type="button" aria-label="关闭窗口" title="关闭">×</button>
+    </header>
+
+    <section id="conversation" class="conversation" aria-label="聊天">
+      <div id="messages" class="messages" role="log" aria-live="off" tabindex="0"></div>
+      <p id="chat-error" class="alert" role="status" hidden></p>
+      <form id="composer" class="composer">
+        <textarea id="message" rows="2" maxlength="3000" aria-label="消息" placeholder="输入消息，或 /search 关键词"></textarea>
+        <div class="composer-bar">
+          <label class="check"><input id="use-search" type="checkbox"> 联网搜索</label>
+          <button id="stop" class="quiet" type="button" hidden>停止</button>
+          <button id="send" class="primary" type="submit">发送</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="settings-panel" class="settings-panel" aria-label="设置" hidden>
+      <form id="settings-form">
+        <div class="field-group">
+          <h2>聊天視窗</h2>
+          <div class="size-fields">
+            <label for="chat-width">寬度（px）<input id="chat-width" type="number" min="300" max="1600" step="1" value="378" required></label>
+            <label for="chat-height">高度（px）<input id="chat-height" type="number" min="320" max="1600" step="1" value="512" required></label>
+            <button id="apply-chat-size" class="quiet" type="button">套用</button>
+          </div>
+          <p id="chat-size-status" class="hint" role="status" hidden></p>
+        </div>
+        <div class="field-group">
+          <h2>聊天模型</h2>
+          <label for="local-provider">本機模型</label>
+          <div class="field-row">
+            <select id="local-provider"><option value="deepseek">本機 DeepSeek（自動啟動）</option><option value="qwen">本機千問 Qwen2.5（1.5B）</option><option value="ollama">Ollama</option></select>
+            <button id="check-model" class="quiet" type="button">檢測</button>
+          </div>
+          <p id="provider-detail" class="hint" role="status"></p>
+          <div id="ollama-fields" class="subfields" hidden>
+            <label for="model">Ollama 模型</label><select id="model"></select>
+            <button id="ollama-help" class="link-button" type="button">Ollama 下载与安装</button>
+          </div>
+          <label for="context-turns">上下文轮数</label><input id="context-turns" type="number" min="1" max="40" required>
+        </div>
+        <div class="field-group">
+          <h2>云端备用</h2>
+          <label class="check"><input id="cloud-enabled" type="checkbox"> 允许云端备用和主动调用的云端工具</label>
+          <div id="cloud-fields" class="subfields" hidden>
+            <label for="cloud-provider">云端服务</label>
+            <select id="cloud-provider"><option value="compatible">自定义兼容 API</option><option value="deepseek">DeepSeek Flash</option></select>
+            <div id="compatible-fields" class="subfields">
+              <label for="cloud-endpoint">兼容 API 地址</label><input id="cloud-endpoint" maxlength="500" type="url" placeholder="https://example.com/v1">
+              <label for="cloud-model">云端模型名</label><input id="cloud-model" maxlength="500" type="text">
+              <label for="cloud-key">API 密钥</label><input id="cloud-key" type="password" maxlength="4000" autocomplete="off">
+              <label class="check"><input id="clear-key" type="checkbox"> 清除已保存密钥</label>
+            </div>
+            <div id="deepseek-fields" class="subfields" hidden>
+              <label for="deepseek-key">DeepSeek API 密钥</label><input id="deepseek-key" type="password" maxlength="4000" autocomplete="off">
+              <label class="check"><input id="clear-deepseek-key" type="checkbox"> 清除已保存密钥</label>
+              <label class="check"><input id="deepseek-thinking" type="checkbox"> 开启深度思考</label>
+              <div class="field-row"><button id="test-deepseek" class="quiet" type="button">检测已保存的密钥</button></div>
+              <p id="deepseek-status" class="hint" role="status"></p>
+              <p class="hint">输入 /read 网页地址可读取公开网页。云端工具会发送当前对话和上下文，可能产生 API 费用。</p>
+            </div>
+          </div>
+        </div>
+        <div class="field-group">
+          <h2>联网搜索</h2>
+          <label for="search-provider">搜索服务</label>
+          <select id="search-provider"><option value="ddgs">ddgs · Python</option><option value="searxng">SearXNG · JSON</option><option value="deepseek">DeepSeek · 云端</option></select>
+          <div id="python-field" class="subfields">
+            <label for="python-path">Python 解释器路径（可选）</label><input id="python-path" maxlength="500" type="text" placeholder="自动查找 Python">
+            <p class="hint">使用 Python 3.10+，并安装 ddgs。</p>
+          </div>
+          <div id="searxng-field" class="subfields" hidden>
+            <label for="searxng-url">SearXNG 地址</label><input id="searxng-url" maxlength="500" type="url" placeholder="http://127.0.0.1:8080">
+          </div>
+          <p id="deepseek-search-hint" class="hint" hidden>使用 /search 或勾选联网搜索时，由 DeepSeek 回答并提供来源。</p>
+        </div>
+        <div class="field-group">
+          <h2>桌宠</h2>
+          <label for="outfit">角色与服装</label><select id="outfit"></select>
+          <button id="open-wardrobe" class="primary" type="button">開啟自由搭配</button>
+          <div class="field-row"><button id="import-outfit" class="quiet" type="button">导入角色包</button><button id="reload-outfits" class="quiet" type="button">刷新列表</button></div>
+          <label for="pet-size">玩偶縮放（80–400 px）</label>
+          <div class="field-row"><input id="pet-size" type="number" min="80" max="400" required><button id="apply-size" class="quiet" type="button">应用</button></div>
+          <label class="check"><input id="auto-launch" type="checkbox"> 登录 Windows 时启动</label>
+          <p id="launch-hint" class="hint" hidden>安装版支持登录启动。</p>
+        </div>
+        <div class="settings-footer"><p id="settings-status" role="status"></p><button id="save" class="primary" type="submit">保存设置</button></div>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="/chat.js"></script>
+</body>
+</html>

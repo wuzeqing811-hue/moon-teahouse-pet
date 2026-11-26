@@ -1,0 +1,42 @@
+{
+  "tops": [
+    {"id":"moon-blouse","name":"月瓣襯衫","cut":"blouse","color":"#eee0f4","shade":"#b7a1c6","trim":"#614c7e","accent":"#e9af6a","motif":"moon"},
+    {"id":"sea-sailor","name":"潮汐水手服","cut":"sailor","color":"#4785a1","shade":"#305675","trim":"#ebeced","accent":"#f4bf92","motif":"stripe"},
+    {"id":"rust-rider","name":"赤陶騎士夾克","cut":"rider","color":"#b55c4d","shade":"#783e43","trim":"#342e45","accent":"#f3cb77","motif":"diamond"},
+    {"id":"moss-hoodie","name":"苔原連帽衫","cut":"hoodie","color":"#86a179","shade":"#506c5b","trim":"#d9e2b5","accent":"#ebc996","motif":"leaf"},
+    {"id":"plum-wrap","name":"梅茶交領衣","cut":"wrap","color":"#9b5a7c","shade":"#613e62","trim":"#f6ccd0","accent":"#f2b77b","motif":"flower"},
+    {"id":"berry-varsity","name":"莓果棒球外套","cut":"varsity","color":"#c36385","shade":"#874463","trim":"#ffece5","accent":"#f9d484","motif":"star"},
+    {"id":"night-waistcoat","name":"夜航雙排扣背心","cut":"vest","color":"#595b97","shade":"#343955","trim":"#f1dcaa","accent":"#f7c45d","motif":"pinstripe"},
+    {"id":"citrus-rain","name":"柚子短雨衣","cut":"rain","color":"#e9ac54","shade":"#b66b49","trim":"#f8e6aa","accent":"#7b694f","motif":"dot"},
+    {"id":"lavender-knit","name":"薰衣草針織衫","cut":"knit","color":"#9e86bb","shade":"#665985","trim":"#d8c7e9","accent":"#eeafaf","motif":"knit"},
+    {"id":"peony-puff","name":"蜜桃泡泡袖","cut":"puff","color":"#f3a99b","shade":"#cb7b7c","trim":"#fff0da","accent":"#bd5977","motif":"flower"},
+    {"id":"denim-chore","name":"靛藍工裝襯衣","cut":"work","color":"#608da0","shade":"#3d5c78","trim":"#9dc7cf","accent":"#f0cc84","motif":"pocket"},
+    {"id":"comet-cape","name":"彗星短斗篷","cut":"cape","color":"#58618f","shade":"#3e3b64","trim":"#c4bcf6","accent":"#ffe5a0","motif":"star"}
+  ],
+  "bottoms": [
+    {"id":"ink-pleats","name":"墨藍百褶裙","kind":"skirt","cut":"pleats","color":"#595b92","shade":"#383b67","trim":"#e9cd88","accent":"#c4bcea","motif":"stripe"},
+    {"id":"rose-ruffles","name":"玫瑰雙層荷葉裙","kind":"skirt","cut":"ruffle","color":"#d17f9d","shade":"#965775","trim":"#ffdbdc","accent":"#f2c478","motif":"flower"},
+    {"id":"forest-wrap","name":"森林交疊裙","kind":"skirt","cut":"wrap","color":"#6a947e","shade":"#3c685f","trim":"#dfe4b9","accent":"#edb87d","motif":"leaf"},
+    {"id":"taro-balloon","name":"芋泥燈籠裙","kind":"skirt","cut":"bubble","color":"#b496cf","shade":"#7b689d","trim":"#eedbf3","accent":"#f1c07f","motif":"dot"},
+    {"id":"apricot-petal","name":"杏仁花瓣裙","kind":"skirt","cut":"petal","color":"#efae81","shade":"#ba736a","trim":"#ffebc8","accent":"#a65a73","motif":"flower"},
+    {"id":"dusk-tail","name":"暮光燕尾裙","kind":"skirt","cut":"tail","color":"#806594","shade":"#51436e","trim":"#d9b7dc","accent":"#ffe19c","motif":"star"},
+    {"id":"cloud-straight","name":"霧藍直筒褲","kind":"pants","cut":"straight","color":"#79a2bb","shade":"#4f7089","trim":"#c2d9e5","accent":"#f9d48e","motif":"seam"},
+    {"id":"olive-cargo","name":"橄欖多袋工裝褲","kind":"pants","cut":"cargo","color":"#929465","shade":"#626a50","trim":"#c9c49a","accent":"#edba78","motif":"pocket"},
+    {"id":"cranberry-jogger","name":"蔓越莓束口褲","kind":"pants","cut":"jogger","color":"#a94666","shade":"#74344f","trim":"#eeb0bb","accent":"#ffdb9e","motif":"stripe"},
+    {"id":"sand-culotte","name":"沙丘寬褲裙","kind":"pants","cut":"culotte","color":"#ceaa7c","shade":"#9a745e","trim":"#f6dfad","accent":"#8d6259","motif":"seam"},
+    {"id":"mint-shorts","name":"薄荷翻邊短褲","kind":"pants","cut":"shorts","color":"#82b8a8","shade":"#4c837c","trim":"#d2eee0","accent":"#f2bf88","motif":"pocket"},
+    {"id":"midnight-flare","name":"星夜喇叭褲","kind":"pants","cut":"flare","color":"#655483","shade":"#3e345c","trim":"#c3aade","accent":"#fbe0a0","motif":"star"}
+  ],
+  "hairs": [
+    {"id":"original","name":"原髮型"},
+    {"id":"bob","name":"圓弧短鮑伯"},
+    {"id":"braids","name":"緞帶雙辮"},
+    {"id":"pony","name":"高側馬尾"},
+    {"id":"buns","name":"雙丸子頭"},
+    {"id":"waves","name":"垂肩長捲髮"}
+  ],
+  "defaults": {
+    "girl":{"top":"moon-blouse","bottom":"ink-pleats"},
+    "fox":{"top":"moss-hoodie","bottom":"forest-wrap"}
+  }
+}

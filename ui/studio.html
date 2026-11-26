@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:">
+  <title>月亮茶屋・自由搭配</title>
+  <link rel="stylesheet" href="/studio.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1><span aria-hidden="true">☾</span> 自由搭配</h1>
+    <div id="roles" class="roles" aria-label="角色"></div>
+  </header>
+  <main>
+    <section class="display" aria-label="角色預覽">
+      <div class="stage"><canvas id="preview" width="320" height="320" aria-label="目前搭配"></canvas></div>
+      <div id="motion" class="segmented" aria-label="預覽動作">
+        <button type="button" data-motion="click" aria-pressed="false">招手</button>
+      </div>
+      <div id="reactions" class="segmented reactions" aria-label="角色表情與動作" hidden></div>
+      <details id="joint-preview" class="joint-preview">
+        <summary>單關節預覽</summary>
+        <div class="joint-controls">
+          <select id="joint-name" aria-label="關節"></select>
+          <input id="joint-angle" type="range" min="-26" max="26" step="1" value="0" aria-label="關節角度">
+          <output id="joint-value" for="joint-angle">0°</output>
+          <button id="joint-reset" type="button">歸零</button>
+        </div>
+      </details>
+      <p id="selection" class="selection"></p>
+    </section>
+    <section class="chooser" aria-label="搭配選項">
+      <div class="segmented filters" aria-label="單品分類" id="tabs">
+        <button type="button" data-tab="top" aria-pressed="true">上衣</button>
+        <button type="button" data-tab="bottom" aria-pressed="false">下裝</button>
+        <button type="button" data-tab="style" aria-pressed="false">髮型與配色</button>
+      </div>
+      <div id="pieces" class="pieces"></div>
+      <div id="styling" class="styling" hidden>
+        <h2>髮型</h2><div id="hairs" class="hair-list"></div>
+        <h2>髮色</h2><div class="colors" id="hair-colors"></div>
+        <h2>瞳色</h2><div class="colors" id="eye-colors"></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p id="feedback" role="status"></p>
+    <button id="preset" class="secondary" type="button" disabled>使用原套裝</button>
+    <button id="apply" class="primary" type="button" disabled>套用到桌寵</button>
+  </footer>
+  <script type="module" src="/studio.js"></script>
+</body>
+</html>
